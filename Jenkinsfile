@@ -8,7 +8,7 @@ pipeline {
     environment {
         Name_image   = 'image_site'
         URL_image    = 'git@github.com:ABVstudio/image_site.git'
-        ECR_build    = "443370672158.dkr.ecr.us-east-1.amazonaws.com/lepsey_repository:${BUILD_NAMBER}"
+        ECR_build    = "443370672158.dkr.ecr.us-east-1.amazonaws.com/lepsey_repository:${BUILD_NUMBER}"
         ECR_build_latest = "443370672158.dkr.ecr.us-east-1.amazonaws.com/lepsey_repository:latest"
     }
 
