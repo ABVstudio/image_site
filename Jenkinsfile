@@ -8,7 +8,8 @@ pipeline {
     environment {
         Name_image   = 'image_site'
         URL_image    = 'git@github.com:ABVstudio/image_site.git'
-        ECR_build    = "443370672158.dkr.ecr.us-east-1.amazonaws.com/lepsey_repository:latest"
+        ECR_build    = "443370672158.dkr.ecr.us-east-1.amazonaws.com/lepsey_repository:${BUILD_NAMBER}"
+        ECR_build_latest = "443370672158.dkr.ecr.us-east-1.amazonaws.com/lepsey_repository:latest"
     }
 
     stages {
@@ -37,7 +38,9 @@ pipeline {
         stage('aws tag and push') {
             steps {
                 sh "sudo docker tag ${Name_image}:latest ${ECR_build}"
+                sh "sudo docker tag ${Name_image}:latest ${ECR_build_latest}"
                 sh "sudo docker push ${ECR_build}"
+                sh "sudo docker push ${ECR_build_latest}"
             }
         }
         stage('clear image') {
